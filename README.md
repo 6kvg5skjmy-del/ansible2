@@ -47,11 +47,16 @@ For token, enter the token provided
 For workspace anter the workspace you made in Terraform (you did...right?)
 
 ### Inventories
-Create an inventory called "TechXchangeNL" and add a dynamic inventory source to it named "Terraform". This source needs a special plugin and some configuration to do the magic of syncing the statefile. The plugin is in the proviede execution environment and the config that you need to give in the _Source Variables_ are:
+Create an inventory called "TechXchangeNL" and add a dynamic inventory source to it named "Terraform". This source needs a special plugin and some configuration to do the magic of syncing the statefile. The plugin is in the provided execution environment and the config that you need to give in the _Source Variables_ are:
 ```text
 plugin: cloud.terraform.terraform_state
 backend_type: remote
 ```
+Also, you need the Terraform Backend Configuration Credential you made as the credential for this source. You can test it by syncing the source manually.
+
+### Job Templates
+Now that you have the basics set up (project, credential, inventory), you can define job templates in AAP. As you can see in the repository where this text lives, there are 4 playbooks:
+- 
 
 
 
