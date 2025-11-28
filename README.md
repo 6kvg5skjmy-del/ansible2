@@ -75,11 +75,14 @@ compose:
 hostnames:
   - tag:Name
 keyed_groups:
-  - prefix: os
-    key: tags.OS
   - prefix: role
     key: tags.Role
 ```
+  What does this do:
+  - `compose` will use the value of the key `public_ip` received from HCP to create a key ansible_host with the same value. ansible_host is used by jobs to connect to the host.
+  - `hostnames` is used to use the value of the tag `Name` as received from HCP to give the host its name.
+  - `keyed_groups` is used to make inventory groups from tag values as received from HCP. So here a group will be created with prefix role and the value from tag Role as received from HPC. So: `role_<tagvalue>`. The host will be placed in this group.
+
 Also, you need the `Terraform Backend Configuration` Credential you made before as the credential for this source. You can test it by syncing the source manually. Do NOT enable _update on launch_.
 
 ### Job Templates
